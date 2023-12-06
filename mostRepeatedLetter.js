@@ -1,9 +1,9 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const findMostRepeatedLetter = require('@julidino/find-most-repeated-letter');
 
-module.exports = function findMostRepeatedLetterInFile(filePath) {
+module.exports = async function findMostRepeatedLetterInFile(filePath) {
     try {
-        const text = fs.readFileSync(filePath, 'utf-8');
+        const text = await fs.readFile(filePath, 'utf-8');
         const mostRepeatedLetter = findMostRepeatedLetter(text);
         console.log('Most repeated letter in', filePath, 'is', mostRepeatedLetter);
     } catch (error) {
